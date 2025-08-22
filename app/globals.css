@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 248 248 248; /* #F8F8F8 */
+  --fg: 17 24 39; /* gray-900 */
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+/* スクロールバー控えめ */
+* {
+  scrollbar-width: thin;
+}
