@@ -63,6 +63,13 @@ export default function Home() {
       <div className="py-6">
         {viewMode==='grid' ? (
           <div className="grid gap-6" style={{gridTemplateColumns: "repeat(auto-fill, minmax(312px, 1fr))"}}>
+            <button
+              onClick={()=>{
+                const b = addBook('新しいブック');
+                router.push(`/book/${b.id}`);
+              }}
+              className="h-44 rounded-xl border-2 border-dashed border-gray-300 p-4 bg-white flex items-center justify-center text-sm text-gray-600"
+            >+ 新規ブックを作成</button>
             {filtered.map((b)=> (
               <button key={b.id} onClick={()=> router.push(`/book/${b.id}`)} className="text-left h-44 rounded-xl shadow-sm hover:shadow-md p-4 bg-white border border-gray-100">
                 <div className="flex items-center justify-between">
@@ -73,16 +80,16 @@ export default function Home() {
                 <div className="mt-2 text-xs text-gray-500">{new Date(b.updatedAt).toLocaleDateString('ja-JP', {year:'numeric', month:'2-digit', day:'2-digit'})} ・ {b.sourceCount} 個のソース</div>
               </button>
             ))}
+          </div>
+        ) : (
+          <div className="divide-y rounded-md border bg-white">
             <button
               onClick={()=>{
                 const b = addBook('新しいブック');
                 router.push(`/book/${b.id}`);
               }}
-              className="h-44 rounded-xl border-2 border-dashed border-gray-300 p-4 bg-white flex items-center justify-center text-sm text-gray-600"
+              className="w-full text-left h-16 px-4 hover:bg-gray-50 flex items-center gap-4 border-b"
             >+ 新規ブックを作成</button>
-          </div>
-        ) : (
-          <div className="divide-y rounded-md border bg-white">
             {filtered.map(b=> (
               <button key={b.id} onClick={()=> router.push(`/book/${b.id}`)} className="w-full text-left h-16 px-4 hover:bg-gray-50 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">{b.coverEmoji || '📘'}</div>
