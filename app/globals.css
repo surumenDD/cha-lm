@@ -20,3 +20,15 @@ body {
 * {
   scrollbar-width: thin;
 }
+
+/* UI ポリッシュ: フォーカス/ホバー/角丸の統一 */
+button, input, select, textarea {
+  border-radius: 0.5rem; /* rounded-md */
+}
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid rgb(59 130 246 / 0.6); /* ring-blue-500/60 相当 */
+  outline-offset: 2px;
+}
+button:hover {
+  filter: brightness(0.98);
+}
